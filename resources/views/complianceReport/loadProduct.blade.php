@@ -1,0 +1,2 @@
+<label class="control-label" for="productId">@lang('label.SELECT_PRODUCT'):</label>
+{!! Form::select('product_id', $productArr, Request::get('product_id'), ['class' => 'form-control js-source-states', 'id' => 'productId']) !!}

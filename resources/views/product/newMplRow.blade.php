@@ -1,0 +1,61 @@
+<?php
+$v3 = 'z' . uniqid();
+?>
+<div class="col-md-12">
+    <div class="col-md-3">
+        <label class="control-label">@lang('label.CHOOSE_MANUFACTURER'): <span class="text-danger">*</span></label>
+        {!! Form::select('manufacturer_id['.$v3.']', $manufacturerArr, null, ['class' => 'form-control js-source-states', 'id' => 'manufacturerId_'.$v3]) !!}
+        <span class="text-danger">{{ $errors->first('manufacturer_id') }}</span>
+    </div>
+    <div class="col-md-1">
+        <label class="control-label">@lang('label.LEVEL'):</label>
+        {!! Form::text('m_level['.$v3.']', null, ['id'=> 'mLevel_'.$v3, 'class' => 'form-control interger-only','maxlength'=> "4"]) !!} 
+    </div>
+    <div class="col-md-1">
+        <label class="control-label">@lang('label.VERSION'):</label>
+        {!! Form::text('m_version['.$v3.']', null, ['id'=> 'mVersion_'.$v3, 'class' => 'form-control interger-only','maxlength'=> "4"]) !!} 
+    </div>
+    <div class="col-md-3">
+        <label class="control-label">@lang('label.ATTACHMENT'):</label>
+        <br/>
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+            <span class="btn green btn-file">
+                <span class="fileinput-new"> Select file </span>
+                <span class="fileinput-exists"> Change </span>
+                {!! Form::file('mpl_file['.$v3.']',['id'=> 'mplFile_'.$v3]) !!}
+            </span>
+            <span class="fileinput-filename"></span> &nbsp;
+            <a href="javascript:;" class="close fileinput-exists" data-dismiss="fileinput"> </a>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <label class="control-label">@lang('label.DATE') :</label>
+        <div class="input-group date datepicker" data-date-format="yyyy-mm-dd">
+            {!! Form::text('m_date['.$v3.']', null, ['id'=> 'mDate_'.$v3, 'class' => 'form-control', 'placeholder' => 'yyyy-mm-dd', 'readonly']) !!} 
+            <span class="input-group-btn">
+                <button class="btn default reset-date" type="button" remove="date_{{ $v3 }}">
+                    <i class="fa fa-times"></i>
+                </button>
+                <button class="btn default date-set" type="button">
+                    <i class="fa fa-calendar"></i>
+                </button>
+            </span>
+        </div>
+    </div>
+    
+    
+    <div class="col-md-1">
+        <br/>
+        <button class="btn btn-danger remove tooltips" title="Remove" type="button">
+            <i class="fa fa-remove"></i>&nbsp;@lang('label.DELETE')
+        </button>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(document).on('click', '.remove', function() {
+            $(this).parent().parent().remove();
+            return false;
+        });
+    });
+</script>
